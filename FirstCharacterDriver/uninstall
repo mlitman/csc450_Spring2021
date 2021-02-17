@@ -1,0 +1,2 @@
+sudo rmmod charDriver.ko
+sudo rm /dev/chardev

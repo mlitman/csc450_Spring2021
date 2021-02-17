@@ -30,8 +30,10 @@ static ssize_t device_write(struct file *, const char *, size_t, loff_t *);
 static int Major;		/* Major number assigned to our device driver */
 static int Device_Open = 0;	/* Is device open?  
 				 * Used to prevent multiple access to device */
+//static char* msg2 = (char*)malloc(BUF_LEN);
+//static char msgJava = new char[BUF_LEN]; //java
 static char msg[BUF_LEN];	/* The msg the device will give when asked */
-static char *msg_Ptr;
+static char* msg_Ptr;
 
 static struct file_operations fops = {
 	.read = device_read,
@@ -91,7 +93,8 @@ static int device_open(struct inode *inode, struct file *file)
 		return -EBUSY;
 
 	Device_Open++;
-	sprintf(msg, "I already told you %d times Hello world!\n", counter++);
+	sprintf(msg, "I already told you %d times Hello world!\n", counter);
+    counter++;
 	msg_Ptr = msg;
 	try_module_get(THIS_MODULE);
 
@@ -146,7 +149,9 @@ static ssize_t device_read(struct file *filp,	/* see include/linux/fs.h   */
 		 * put_user which copies data from the kernel data segment to
 		 * the user data segment. 
 		 */
-		put_user(*(msg_Ptr++), buffer++);
+		put_user(*(msg_Ptr), buffer);
+        msg_Ptr++;
+        buffer++;
 
 		length--;
 		bytes_read++;

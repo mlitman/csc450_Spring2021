@@ -1,0 +1,3 @@
+sudo insmod charDriver.ko
+dmesg | tail
+sudo mknod /dev/chardev c 242 0
