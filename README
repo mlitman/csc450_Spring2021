@@ -1,0 +1,2 @@
+Give access to linux kernel 
+cp -r /lib/modules/$(uname -r)/build/include/linux .
