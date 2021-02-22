@@ -1,0 +1,1 @@
+cmd_/home/parallels/CSC450_Spring2021/ProcFSModule/procfs1.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/parallels/CSC450_Spring2021/ProcFSModule/procfs1.ko /home/parallels/CSC450_Spring2021/ProcFSModule/procfs1.o /home/parallels/CSC450_Spring2021/ProcFSModule/procfs1.mod.o ;  true
