@@ -1,0 +1,1 @@
+sudo bash -c 'echo "33 7" > /proc/mydev'
