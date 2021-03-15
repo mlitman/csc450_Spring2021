@@ -49,7 +49,7 @@ static struct file_operations fops = {
  */
 int init_module(void)
 {
-        Major = register_chrdev(0, DEVICE_NAME, &fops);
+    Major = register_chrdev(0, DEVICE_NAME, &fops);
 
 	if (Major < 0) {
 	  printk(KERN_ALERT "Registering char device failed with %d\n", Major);
@@ -89,10 +89,11 @@ static int device_open(struct inode *inode, struct file *file)
 {
 	static int counter = 0;
 
+	//ghetto semaphore
 	if (Device_Open)
 		return -EBUSY;
 
-	Device_Open++;
+	Device_Open++; //happens in a non-atomic way
 	sprintf(msg, "I already told you %d times Hello world!\n", counter);
     counter++;
 	msg_Ptr = msg;
