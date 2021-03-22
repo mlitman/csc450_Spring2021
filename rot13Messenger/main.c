@@ -9,10 +9,7 @@ char* encodeRot13String(char* s);
 
 int main(int argc, char** argv)
 {
-    char c = 'r';
-    char answer = encodeRot13(c);
-    printf("%c maps to %c\n", c, answer);
-    char* encodedString = encodeRot13String("hello");
+    char* encodedString = encodeRot13String("uryyb");
     printf("encoded string is: %s", encodedString);
 }
 
@@ -20,12 +17,15 @@ char* encodeRot13String(char* s)
 {
     //how big will my output be?
     int length = stringLength(s);
-    char* answer = (char*)malloc(length * (int)sizeof(char));
-    //finishing writing this function such that it returns a new string
-    //which is the s encoded in rot13.  You should use old school pointer
-    //math whenever possible.
-
-
+    char* answer = (char*)malloc(length * (int)sizeof(char) + 1);
+    char temp;
+    for(int i = 0; i < length; i++)
+    {
+        temp = encodeRot13(*(s + i));
+        *(answer + i) = temp;
+    }
+    *(answer + length) = '\0';
+    return answer;
 }
 
 int stringLength(char* s)
@@ -48,8 +48,6 @@ char encodeRot13(char c)
     //printf("%d\n", index);
     //return alphabet[index];
     return *(alphabet + index);
-    //how did we tell if we wrapped around?
-    //**********START HERE!!!!!
 }
 
 int indexOf(char c, char* s)
