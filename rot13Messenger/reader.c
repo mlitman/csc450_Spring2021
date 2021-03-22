@@ -11,7 +11,7 @@ int main()
     int shmid = shmget(key,1024,0666|IPC_CREAT); 
   
     // shmat to attach to shared memory 
-    char *str = (char*) shmat(shmid,(void*)0,0); 
+    char* str = (char*) shmat(shmid,(void*)0,0); 
   
     printf("Data read from memory: %s\n",str); 
       
