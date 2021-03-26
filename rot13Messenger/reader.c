@@ -1,6 +1,7 @@
 #include <sys/ipc.h> 
 #include <sys/shm.h> 
 #include <stdio.h>  
+#include "rot13.h"
   
 int main() 
 { 
@@ -12,8 +13,8 @@ int main()
   
     // shmat to attach to shared memory 
     char* str = (char*) shmat(shmid,(void*)0,0); 
-  
-    printf("Data read from memory: %s\n",str); 
+    char* answer = encodeRot13String(str);
+    printf("Data read from memory: %s\n",answer); 
       
     //detach from shared memory  
     shmdt(str); 

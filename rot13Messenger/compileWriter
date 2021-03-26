@@ -1,0 +1,1 @@
+gcc writer.c rot13.c -o writer

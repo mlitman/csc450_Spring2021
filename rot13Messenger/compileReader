@@ -1,0 +1,1 @@
+gcc reader.c rot13.c -o reader

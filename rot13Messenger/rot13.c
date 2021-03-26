@@ -1,17 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-char encodeRot13(char c);
-int indexOf(char c, char* s);
-int stringLength(char* s);
-char* encodeRot13String(char* s);
-
-int main(int argc, char** argv)
-{
-    char* encodedString = encodeRot13String("uryyb");
-    printf("encoded string is: %s", encodedString);
-}
+#include "rot13.h"
 
 char* encodeRot13String(char* s)
 {
