@@ -1,0 +1,42 @@
+	•	Create two processes say, child and parent.
+	•	Create shared memory mainly needed to store 
+        the counter and other flags to indicate end of 
+        read/write process into the shared memory.
+	•	The counter is incremented by count by both 
+        parent and child processes. The count is either 
+        passed as a command line argument or taken as 
+        default (if not passed as command line argument 
+        or the value is less than 10000). Called with 
+        certain sleep time to ensure both parent and 
+        child accesses the shared memory at the same 
+        time i.e., in parallel.
+	•	Since, the counter is incremented in steps of 
+        1 by both parent and child, the final value 
+        should be double the counter. Since, both parent
+        and child processes performing the operations 
+        at same time, the counter is not incremented as 
+        required. Hence, we need to ensure the 
+        completeness of one process completion followed 
+        by other process.
+	•	All the above implementations are performed in 
+        the file writerNoSem.c
+	•	Check if the counter value is implemented in 
+        file readerNoSem.c
+	•	To ensure completion, the semaphore program is 
+        implemented in file writerWithSem.c. 
+        Remove the semaphore after completion of the 
+        entire process (after read is done from other 
+        program)
+	•	Since, we have separate files to read the value 
+        of counter in the shared memory and don’t have 
+        any effect from writing, the reading program 
+        remains the same (readNoSem.c)
+	•	It is always better to execute the writing 
+        program in one terminal and reading program from 
+        another terminal. Since, the program completes 
+        execution only after the writing and reading 
+        process is complete, it is ok to run the program 
+        after completely executing the write program. 
+        The write program would wait until the read 
+        program is run and only finishes after it is 
+        done.
